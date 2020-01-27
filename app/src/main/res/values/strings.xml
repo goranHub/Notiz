@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Notiz</string>
+    <string name="editText_hint_notiz">Hier eintragen</string>
+    <string name="button_add_notiz">Add note</string>
+</resources>
