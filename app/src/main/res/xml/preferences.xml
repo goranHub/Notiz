@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="preference_xmlmode_key"
+        android:summary="Der XML-Datenmodus ist deaktiviert"
+        android:title="XML-Daten verwenden" />
+    <EditTextPreference
+        android:key="preference_quotecount_key"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="Zitate werden pro Anfrage vom Webserver angefordert."
+        android:title="Anzahl angeforderter Zitate" />
+</PreferenceScreen>
