@@ -36,6 +36,7 @@ public class MainActivityListener implements View.OnClickListener, AdapterView.O
 	private NotizDataSource dataSource;
 	ListView listViewNotiz;
 	ListAdapter quoteArrayAdapter;
+	List<Notiz> emptyListForInitialization = new ArrayList<>();
 
 	public MainActivityListener(MainActivity mainActivity) {
 		this.mainActivity = mainActivity;
@@ -43,7 +44,7 @@ public class MainActivityListener implements View.OnClickListener, AdapterView.O
 
 //		quoteList = dataSource.getAllShoppingMemos();
 		listViewNotiz = mainActivity.findViewById(R.id.lvAllNote);
-		initializeShoppingMemoListView(listViewNotiz);
+		initializeShoppingMemoListView(emptyListForInitialization);
 
 		Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
 		dataSource.open();
@@ -82,24 +83,6 @@ public class MainActivityListener implements View.OnClickListener, AdapterView.O
 			}
 
 		}
-//		if(v.getId() == R.id.btnAddNote) {
-//
-//			Notiz noteObj = new Notiz(1, note1,"",false);
-//
-//			if(TextUtils.isEmpty(note1)) {
-//				mainActivity.txtNotizEintrag.setError("darf nicht leer sein");
-//			}
-//			dataSource.createNotizMemo(note1,"xas");
-//			showAllEntries();
-//
-//		}
-//
-//		if(v.getId() == R.id.btnDelete) {
-//			for(int i =0; i< dataSource.getAllShoppingMemos().size(); i++){
-//				dataSource.deleteShoppingMemo(dataSource.getAllShoppingMemos().get(i));
-//			}
-//			showAllEntries();
-//		}
 	}
 
 	@Override
@@ -121,6 +104,18 @@ public class MainActivityListener implements View.OnClickListener, AdapterView.O
 
 	private void showAllEntries() {
 		List<Notiz> notizList = dataSource.getAllShoppingMemos();
+		ListView listViewNotiz = mainActivity.findViewById(R.id.lvAllNote);
+		ArrayAdapter<Notiz> shoppingMemoArrayAdapter = (ArrayAdapter<Notiz>) listViewNotiz.getAdapter();
+		shoppingMemoArrayAdapter.clear();
+		shoppingMemoArrayAdapter.addAll(notizList);
+		shoppingMemoArrayAdapter.notifyDataSetChanged();
+	}
+
+
+	private void showAllEntriesData() {
+		emptyListForInitialization.clear();
+		NotizMaker notizMaker = new NotizMaker();
+		List<Notiz> notizList = notizMaker.maker();
 		ListView listViewNotiz = mainActivity.findViewById(R.id.lvAllNote);
 		ArrayAdapter<Notiz> shoppingMemoArrayAdapter = (ArrayAdapter<Notiz>) listViewNotiz.getAdapter();
 		shoppingMemoArrayAdapter.clear();
@@ -166,13 +161,13 @@ public class MainActivityListener implements View.OnClickListener, AdapterView.O
 
 
 
-	private void initializeShoppingMemoListView(final ListView listViewNotiz) {
-		List<Notiz> emptyListForInitialization = new ArrayList<>();
+	private void initializeShoppingMemoListView(List<Notiz> data) {
+
 
 		//Erstellen des ArrayAdapters für unsere ListView
 		ArrayAdapter<Notiz> shoppingMemoArrayAdapter = new ArrayAdapter<Notiz>(mainActivity,
 				android.R.layout.simple_list_item_multiple_choice,
-				emptyListForInitialization) {
+				data) {
 
 			@Override
 			public View getView(int position, View view, ViewGroup parent) {
@@ -239,8 +234,12 @@ public class MainActivityListener implements View.OnClickListener, AdapterView.O
 	public boolean onOptionsItemSelected(MenuItem item) {
 
 		switch(item.getItemId()){
-			case R.id.action_get_data:
-				refreshListView();
+			case R.id.action_get_data:{
+
+				showAllEntriesData();
+//				refreshListView();
+			}
+
 				break;
 			case R.id.action_settings:
 				Intent intentSettings = new Intent(mainActivity, SettingsActivity.class);

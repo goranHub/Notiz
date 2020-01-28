@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/app_bar_switch"
+        android:title="from data maker"
+        app:actionLayout="@layout/switch_item"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_get_data"
         android:icon="@android:drawable/ic_menu_rotate"
         android:title="Hole Daten"
