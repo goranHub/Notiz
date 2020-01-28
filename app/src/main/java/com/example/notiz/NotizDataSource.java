@@ -30,6 +30,9 @@ public class NotizDataSource {
 			dbHelper = new NotizDatabaseHelper(context);
 		}
 
+
+
+
 		public void open() {
 			Log.d(LOG_TAG, "Eine Referenz auf die Datenbank wird jetzt angefragt.");
 			database = dbHelper.getWritableDatabase();
@@ -41,7 +44,7 @@ public class NotizDataSource {
 			Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
 		}
 
-		public Notiz createShoppingMemo(String note1, String note2) {
+		public Notiz createNotizMemo(String note1, String note2) {
 			ContentValues values = new ContentValues();
 			values.put(NotizDatabaseHelper.COLUMN_NOTE1, note1);
 			values.put(NotizDatabaseHelper.COLUMN_NOTE2, note2);
