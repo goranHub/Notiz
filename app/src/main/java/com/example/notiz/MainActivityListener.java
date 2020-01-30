@@ -26,6 +26,7 @@ public class MainActivityListener implements View.OnClickListener, AdapterView.O
 	private NotizDataSource dataSource;
 	private ListView listViewNotiz;
 	private ListAdapter quoteArrayAdapter;
+	private MyAdapters myAdapters;
 	private List<Notiz> emptyListForInitialization = new ArrayList<>();
 
 	public MainActivityListener(MainActivity mainActivity) {
@@ -33,7 +34,7 @@ public class MainActivityListener implements View.OnClickListener, AdapterView.O
 		dataSource = new NotizDataSource(mainActivity);
 
 		listViewNotiz = mainActivity.findViewById(R.id.lvAllNote);
-		MyAdapters myAdapters = new MyAdapters(emptyListForInitialization, listViewNotiz, mainActivity);
+		myAdapters = new MyAdapters(emptyListForInitialization, listViewNotiz, mainActivity);
 
 		Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
 		dataSource.open();
@@ -156,9 +157,10 @@ public class MainActivityListener implements View.OnClickListener, AdapterView.O
 			}
 
 				break;
-			case R.id.action_settings:
+			case R.id.action_settings: {
 				Intent intentSettings = new Intent(mainActivity, SettingsActivity.class);
 				mainActivity.startActivity(intentSettings);
+			}
 				break;
 		}
 		return true;
