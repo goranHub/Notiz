@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 	MainActivityListener mainActivityListener;
-
+	private boolean isChecked = false;
 	public EditText txtNotizEintrag;
 
 	@Override
@@ -90,7 +90,10 @@ public class MainActivity extends AppCompatActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
 		return mainActivityListener.onOptionsItemSelected(item);
 	}
+
+
 
 }

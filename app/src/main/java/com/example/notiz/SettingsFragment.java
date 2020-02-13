@@ -17,7 +17,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
 
         //Die Listener registrieren
         Preference xml_preference = findPreference("preference_xmlmode_key");
-        Preference quoteCount_preference = findPreference("preference_quotecount_key");
+        Preference quoteCount_preference = findPreference("preference2DB");
         xml_preference.setOnPreferenceChangeListener(this);
         quoteCount_preference.setOnPreferenceChangeListener(this);
         //Auslesen der Einstellungswerte und Auslösen des Listeners

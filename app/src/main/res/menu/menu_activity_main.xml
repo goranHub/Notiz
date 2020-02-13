@@ -2,11 +2,13 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
         android:id="@+id/app_bar_switch"
-        android:title="from data maker"
-        app:actionLayout="@layout/switch_item"
-        app:showAsAction="always" />
+        android:title="DB"
+        app:showAsAction="always"
+
+        />
     <item
         android:id="@+id/action_get_data"
         android:icon="@android:drawable/ic_menu_rotate"

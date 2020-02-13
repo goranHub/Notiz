@@ -7,9 +7,19 @@
         android:summary="Der XML-Datenmodus ist deaktiviert"
         android:title="XML-Daten verwenden" />
     <EditTextPreference
-        android:key="preference_quotecount_key"
+        android:key="preference1Local"
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:summary="Notizen werden von objekt maker gerufen"
         android:title="Anzahl beipiel notiz daten" />
+
+    <EditTextPreference
+        android:key="preference2DB"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="Notizen werden aus DB"
+        android:title="Anzahl beipiel DB daten" />
+
+
+
 </PreferenceScreen>
